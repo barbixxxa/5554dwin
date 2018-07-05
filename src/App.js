@@ -7,8 +7,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      primeira: 0,
-      segunda: 0
+      primeira: '',
+      segunda: '',
+      resultado: ''
     };
 
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -26,7 +27,7 @@ class App extends Component {
   }
 
   media() {
-    alert(((this.state.primeira) + (this.state.segunda)) / 2);
+    this.setState({ resultado: ((this.state.primeira) + (this.state.segunda)) / 2 });
   }
 
   render() {
@@ -39,15 +40,16 @@ class App extends Component {
         </header>
 
         <div>
-          <form onSubmit={this.media}>
-            <label>
-              Primeira:<input name="primeira" type="number" value={this.state.primeira} onChange={this.handleInputChange} />
-            </label>
-            <label>
-              Segunda:<input name="segunda" type="number" value={this.state.segunda} onChange={this.handleInputChange} />
-            </label>
-            <input type="submit" value="Calcular Média" />
-          </form>
+
+          <label>
+            Primeira:<input name="primeira" type="number" value={this.state.primeira} onChange={this.handleInputChange} />
+          </label>
+          <label>
+            Segunda:<input name="segunda" type="number" value={this.state.segunda} onChange={this.handleInputChange} />
+          </label>
+          <button type="button" onClick={this.media}>Click Me!</button>
+          <p>{this.state.resultado}</p>
+
         </div>
       </div>
     );
