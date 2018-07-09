@@ -8,12 +8,17 @@ class App extends Component {
     super(props);
     this.state = {
       primeira: '',
+      primeiraPorcentagem: '',
       segunda: '',
-      resultado: ''
+      segundaPorcentagem: '',
+      resultado: '',
+      checked: true
     };
-
+    this.clear = this.clear.bind(this);
+    this.check = this.check.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.media = this.media.bind(this);
+    this.mediaPorcentagem = this.mediaPorcentagem.bind(this);
   }
 
   handleInputChange(event) {
@@ -26,8 +31,21 @@ class App extends Component {
     });
   }
 
+  clear() {
+    this.setState({ primeira: '', segunda: '', primeiraPorcentagem: '', segundaPorcentagem: '', resultado: '' });
+  }
+
+  check() {
+    this.clear();
+    this.setState({ checked: !this.state.checked });
+  }
+
   media() {
     this.setState({ resultado: ((this.state.primeira) + (this.state.segunda)) / 2 });
+  }
+
+  mediaPorcentagem() {
+    this.setState({ resultado: ((this.state.primeira * this.state.primeiraPorcentagem) + (this.state.segunda * this.state.segundaPorcentagem)) / 100 });
   }
 
   render() {
@@ -41,14 +59,52 @@ class App extends Component {
 
         <div>
 
-          <label>
-            Primeira:<input name="primeira" type="number" value={this.state.primeira} onChange={this.handleInputChange} />
-          </label>
-          <label>
-            Segunda:<input name="segunda" type="number" value={this.state.segunda} onChange={this.handleInputChange} />
-          </label>
-          <button type="button" onClick={this.media}>Click Me!</button>
-          <p>{this.state.resultado}</p>
+          <div>
+            <input type="radio" name="media" id="mediaSimples" value="mediaSimples" checked={this.state.checked} onChange={this.check} />
+            <label>
+              Média Simples
+            </label>
+
+            <input type="radio" name="media" id="mediaPorcentagem" value="mediaPorcentagem" checked={!this.state.checked} onChange={this.check} />
+            <label>
+              Média com Porcentagem
+            </label>
+          </div>
+
+
+          {this.state.checked ?
+            <div>
+              <label>
+                Primeira:<input name="primeira" type="number" value={this.state.primeira} onChange={this.handleInputChange} placeholder="0" min="0" max="10" />
+              </label>
+              <label>
+                Segunda:<input name="segunda" type="number" value={this.state.segunda} onChange={this.handleInputChange} placeholder="0" min="0" max="10" />
+              </label>
+              <button type="button" onClick={this.media}>Click Me!</button>
+              <p>Média: {this.state.resultado}</p>
+            </div>
+            :
+            <div>
+              <label>
+                Primeira:<input name="primeira" type="number" value={this.state.primeira} onChange={this.handleInputChange} placeholder="0" min="0" max="10" />
+              </label>
+
+              <label>
+                Primeira Porcentagem:<input name="primeiraPorcentagem" type="number" value={this.state.primeiraPorcentagem} onChange={this.handleInputChange} placeholder="0" min="0" max="100" />
+              </label>
+
+              <label>
+                Segunda:<input name="segunda" type="number" value={this.state.segunda} onChange={this.handleInputChange} placeholder="0" min="0" max="10" />
+              </label>
+
+              <label>
+                Segunda Porcentagem:<input name="segundaPorcentagem" type="number" value={this.state.segundaPorcentagem} onChange={this.handleInputChange} placeholder="0" min="0" max="100" />
+              </label>
+
+              <button type="button" onClick={this.mediaPorcentagem}>Click Me!</button>
+              <p>Média: {this.state.resultado}</p>
+            </div>}
+
 
         </div>
       </div>
