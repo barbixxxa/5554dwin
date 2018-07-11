@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header.js';
 import MediaSimples from './components/MediaSimples.js';
 import MediaPorcentagem from './components/MediaPorcentagem.js';
 
@@ -56,13 +56,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to 555Calculator</h1>
-        </header>
-
+        <Header />
         <div>
-
           <div>
             <input type="radio" name="media" id="mediaSimples" value="mediaSimples" checked={this.state.checked} onChange={this.check} />
             <label>

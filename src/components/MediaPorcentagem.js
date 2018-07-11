@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class MediaSimples extends React.Component {
+export default class MediaPorcentagem extends React.Component {
 
     render() {
         return (
