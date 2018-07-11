@@ -6,7 +6,7 @@ export default class MediaPorcentagem extends React.Component {
         return (
             <div>
                 <label>
-                    Primeira:<input name="primeira" type="number" value={this.props.primeira} onChange={this.props.onChange} placeholder="0" min="0" max="10" />
+                    Primeira:<input name="primeira" type="number" value={this.props.primeira} onChange={this.props.onChange} placeholder="0.0" min="0.0" max="10.0" step="0.1" />
                 </label>
 
                 <label>
@@ -14,11 +14,11 @@ export default class MediaPorcentagem extends React.Component {
                 </label>
 
                 <label>
-                    Segunda:<input name="segunda" type="number" value={this.props.segunda} onChange={this.props.onChange} placeholder="0" min="0" max="10" />
+                    Segunda:<input name="segunda" type="number" value={this.props.segunda} onChange={this.props.onChange} placeholder="0.0" min="0.0" max="10.0" step="0.1" />
                 </label>
 
                 <label>
-                    Segunda Porcentagem:<input name="segundaPorcentagem" type="number" value={this.props.segundaPorcentagem} onChange={this.props.onChange} placeholder="0" min="0" max="100" />
+                    Segunda Porcentagem:<input name="segundaPorcentagem" type="number" value={ 100 - this.props.primeiraPorcentagem} placeholder="0" min="0" max="100" disabled />
                 </label>
 
                 <button type="button" onClick={this.props.onClick}>Click Me!</button>

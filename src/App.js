@@ -15,6 +15,7 @@ class App extends Component {
       segunda: '',
       segundaPorcentagem: '',
       resultado: '',
+      precisa: '',
       checked: true
     };
     this.clear = this.clear.bind(this);
@@ -25,13 +26,12 @@ class App extends Component {
   }
 
   handleInputChange(event) {
-    console.log("TESTE");
     const target = event.target;
     const value = target.value;
     const name = target.name;
 
     this.setState({
-      [name]: Math.floor(value)
+      [name]: parseFloat(value)
     });
   }
 
@@ -45,12 +45,19 @@ class App extends Component {
   }
 
   media() {
-    console.log("TESTE");
-    this.setState({ resultado: ((this.state.primeira) + (this.state.segunda)) / 2 });
+    let result = ((this.state.primeira) + (this.state.segunda)) / 2;
+    this.setState({ resultado: result });
+
+    if (result < 3) {
+      console.log("Tchau");
+    } else if (result < 7) {
+      console.log(10 - result);
+    }
+
   }
 
   mediaPorcentagem() {
-    this.setState({ resultado: ((this.state.primeira * this.state.primeiraPorcentagem) + (this.state.segunda * this.state.segundaPorcentagem)) / 100 });
+    this.setState({ resultado: ((this.state.primeira * this.state.primeiraPorcentagem) + (this.state.segunda * (100 - this.state.primeiraPorcentagem))) / 100 });
   }
 
   render() {
