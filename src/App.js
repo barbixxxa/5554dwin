@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import MediaSimples from './components/MediaSimples.js';
 
 class App extends Component {
 
@@ -22,6 +23,7 @@ class App extends Component {
   }
 
   handleInputChange(event) {
+    console.log("TESTE");
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -41,6 +43,7 @@ class App extends Component {
   }
 
   media() {
+    console.log("TESTE");
     this.setState({ resultado: ((this.state.primeira) + (this.state.segunda)) / 2 });
   }
 
@@ -73,16 +76,7 @@ class App extends Component {
 
 
           {this.state.checked ?
-            <div>
-              <label>
-                Primeira:<input name="primeira" type="number" value={this.state.primeira} onChange={this.handleInputChange} placeholder="0" min="0" max="10" />
-              </label>
-              <label>
-                Segunda:<input name="segunda" type="number" value={this.state.segunda} onChange={this.handleInputChange} placeholder="0" min="0" max="10" />
-              </label>
-              <button type="button" onClick={this.media}>Click Me!</button>
-              <p>Média: {this.state.resultado}</p>
-            </div>
+            <MediaSimples primeira={this.state.primeira} segunda={this.state.segunda} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={() => this.media()} />
             :
             <div>
               <label>
@@ -90,7 +84,7 @@ class App extends Component {
               </label>
 
               <label>
-                Primeira Porcentagem:<input name="primeiraPorcentagem" type="number" value={this.state.primeiraPorcentagem} onChange={this.handleInputChange} placeholder="0" min="0" max="100" />
+                Primeira Porcentagem:<input name="primeiraPorcentagem" type="number" value={this.state.primeiraPorcentagem} onChange={(e) => this.handleInputChange(e)} placeholder="0" min="0" max="100" />
               </label>
 
               <label>

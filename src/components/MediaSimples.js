@@ -6,13 +6,13 @@ export default class MediaSimples extends React.Component {
         return (
             <div>
                 <label>
-                    Primeira:<input name="primeira" type="number" value={this.state.primeira} onChange={this.handleInputChange} placeholder="0" class="form-control" />
+                    Primeira:<input name="primeira" type="number" value={this.props.primeira} onChange={this.props.onChange} placeholder="0" min="0" max="10" />
                 </label>
                 <label>
-                    Segunda:<input name="segunda" type="number" value={this.state.segunda} onChange={this.handleInputChange} placeholder="0" class="form-control" />
+                    Segunda:<input name="segunda" type="number" value={this.props.segunda} onChange={this.props.onChange} placeholder="0" min="0" max="10" />
                 </label>
-                <button type="button" onClick={this.media}>Click Me!</button>
-                <p>{this.state.resultado}</p>
+                <button type="button" onClick={this.props.onClick}>Click Me!</button>
+                <p>Média: {this.props.resultado}</p>
             </div>
         );
     }
