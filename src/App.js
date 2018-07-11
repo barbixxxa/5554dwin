@@ -27,8 +27,22 @@ class App extends Component {
 
   handleInputChange(event) {
     const target = event.target;
-    const value = target.value;
+    let value = target.value;
     const name = target.name;
+
+    if (name == 'primeira' || name == 'segunda') {
+      if (value > 10) {
+        value = 10;
+      } else if (value < 0) {
+        value = 0;
+      }
+    } else if (name == 'primeiraPorcentagem') {
+      if (value > 100) {
+        value = 100;
+      } else if (value < 0) {
+        value = 0;
+      }
+    }
 
     this.setState({
       [name]: parseFloat(value)
@@ -48,7 +62,6 @@ class App extends Component {
     let result = ((this.state.primeira) + (this.state.segunda)) / 2;
     let msg = "";
     this.setState({ resultado: result });
-
 
     if (result < 3) {
       msg = "Achou que ia pra final!? Achou errado OTÁRIO!!!";
