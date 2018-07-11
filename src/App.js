@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Header from './components/Header.js';
+import MediaOptions from './components/MediaOptions.js';
 import MediaSimples from './components/MediaSimples.js';
 import MediaPorcentagem from './components/MediaPorcentagem.js';
 
@@ -58,25 +59,14 @@ class App extends Component {
       <div className="App">
         <Header />
         <div>
-          <div>
-            <input type="radio" name="media" id="mediaSimples" value="mediaSimples" checked={this.state.checked} onChange={this.check} />
-            <label>
-              Média Simples
-            </label>
-
-            <input type="radio" name="media" id="mediaPorcentagem" value="mediaPorcentagem" checked={!this.state.checked} onChange={this.check} />
-            <label>
-              Média com Porcentagem
-            </label>
-          </div>
-
+          <MediaOptions checked={this.state.checked} onChange={this.check} />
 
           {
             this.state.checked
               ?
-              <MediaSimples primeira={this.state.primeira} segunda={this.state.segunda} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={() => this.media()} />
+              <MediaSimples primeira={this.state.primeira} segunda={this.state.segunda} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.media} />
               :
-              <MediaPorcentagem primeira={this.state.primeira} segunda={this.state.segunda} primeiraPorcentagem={this.state.primeiraPorcentagem} segundaPorcentagem={this.state.segundaPorcentagem} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={() => this.mediaPorcentagem()} />
+              <MediaPorcentagem primeira={this.state.primeira} segunda={this.state.segunda} primeiraPorcentagem={this.state.primeiraPorcentagem} segundaPorcentagem={this.state.segundaPorcentagem} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.mediaPorcentagem} />
           }
 
         </div>
