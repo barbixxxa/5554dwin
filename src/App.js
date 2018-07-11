@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MediaSimples from './components/MediaSimples.js';
+import MediaPorcentagem from './components/MediaPorcentagem.js';
 
 class App extends Component {
 
@@ -75,30 +76,13 @@ class App extends Component {
           </div>
 
 
-          {this.state.checked ?
-            <MediaSimples primeira={this.state.primeira} segunda={this.state.segunda} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={() => this.media()} />
-            :
-            <div>
-              <label>
-                Primeira:<input name="primeira" type="number" value={this.state.primeira} onChange={this.handleInputChange} placeholder="0" min="0" max="10" />
-              </label>
-
-              <label>
-                Primeira Porcentagem:<input name="primeiraPorcentagem" type="number" value={this.state.primeiraPorcentagem} onChange={(e) => this.handleInputChange(e)} placeholder="0" min="0" max="100" />
-              </label>
-
-              <label>
-                Segunda:<input name="segunda" type="number" value={this.state.segunda} onChange={this.handleInputChange} placeholder="0" min="0" max="10" />
-              </label>
-
-              <label>
-                Segunda Porcentagem:<input name="segundaPorcentagem" type="number" value={this.state.segundaPorcentagem} onChange={this.handleInputChange} placeholder="0" min="0" max="100" />
-              </label>
-
-              <button type="button" onClick={this.mediaPorcentagem}>Click Me!</button>
-              <p>Média: {this.state.resultado}</p>
-            </div>}
-
+          {
+            this.state.checked
+              ?
+              <MediaSimples primeira={this.state.primeira} segunda={this.state.segunda} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={() => this.media()} />
+              :
+              <MediaPorcentagem primeira={this.state.primeira} segunda={this.state.segunda} primeiraPorcentagem={this.state.primeiraPorcentagem} segundaPorcentagem={this.state.segundaPorcentagem} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={() => this.mediaPorcentagem()} />
+          }
 
         </div>
       </div>
