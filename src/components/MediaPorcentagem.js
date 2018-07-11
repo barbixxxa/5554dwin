@@ -18,11 +18,15 @@ export default class MediaPorcentagem extends React.Component {
                 </label>
 
                 <label>
-                    Segunda Porcentagem:<input name="segundaPorcentagem" type="number" value={ 100 - this.props.primeiraPorcentagem} placeholder="0" min="0" max="100" disabled />
+                    Segunda Porcentagem:<input name="segundaPorcentagem" type="number" value={100 - this.props.primeiraPorcentagem} placeholder="0" min="0" max="100" disabled />
                 </label>
 
                 <button type="button" onClick={this.props.onClick}>Click Me!</button>
-                <p>Média: {this.props.resultado}</p>
+                {
+                    this.props.showResult ?
+                        <p>Média: {this.props.resultado}</p>
+                        : null
+                }
             </div>
         );
     }

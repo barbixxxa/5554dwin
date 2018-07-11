@@ -12,7 +12,17 @@ export default class MediaSimples extends React.Component {
                     2ºEE:<input name="segunda" type="number" value={this.props.segunda} onChange={this.props.onChange} placeholder="0.0" min="0.0" max="10.0" step="0.1" />
                 </label>
                 <button type="button" onClick={this.props.onClick}>Click Me!</button>
-                <p>Média: {this.props.resultado}</p>
+
+                {
+                    this.props.showResult
+                        ? <div>
+                            <p>Média: {this.props.resultado}</p>
+                            <p>{this.props.message}</p>
+                        </div>
+                        :
+                        null
+                }
+
             </div>
         );
     }
