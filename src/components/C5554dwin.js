@@ -13,8 +13,6 @@ export default class C5554dwin extends React.Component {
                         2º EE:<input name="segunda" type="number" value={this.props.segunda} onChange={this.props.onChange} placeholder="0.0" min="0.0" max="10.0" step="0.1" />
                     </label>
 
-                    <button type="button" onClick={this.props.add3eeField}>Add 3º EE </button>
-
                     {
                         this.props.isTerceira
                             ? <div>
@@ -24,6 +22,8 @@ export default class C5554dwin extends React.Component {
                             </div>
                             : null
                     }
+
+                    <button type="button" onClick={this.props.add3eeField} value="valor">Add 3º EE </button>
 
                     {
                         this.props.showResult

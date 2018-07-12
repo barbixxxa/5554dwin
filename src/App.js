@@ -14,7 +14,7 @@ class App extends Component {
       primeiraPorcentagem: '',
       segunda: '',
       isTerceira: false,
-      terceira: 'testando123',
+      terceira: '',
       resultado: '',
       mensagem: '',
       mediaOption: '5554dwin',
@@ -22,13 +22,14 @@ class App extends Component {
     };
     this.handleOptionChange = this.handleOptionChange.bind(this);
     this.switchOptions = this.switchOptions.bind(this);
+    this.add3eeField = this.add3eeField.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.media = this.media.bind(this);
     this.mediaPorcentagem = this.mediaPorcentagem.bind(this);
   }
 
   handleOptionChange(event) {
-    this.setState({ primeira: '', segunda: '', primeiraPorcentagem: '', resultado: '', showResult: false, mediaOption: event.target.value });
+    this.setState({ primeira: '', segunda: '', terceira: '', primeiraPorcentagem: '', resultado: '', showResult: false, mediaOption: event.target.value });
   }
 
   switchOptions(value) {
@@ -37,7 +38,7 @@ class App extends Component {
         return <C555p4dwin primeira={this.state.primeira} segunda={this.state.segunda} primeiraPorcentagem={this.state.primeiraPorcentagem} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.mediaPorcentagem} showResult={this.state.showResult} />
 
       default:
-        return <C5554dwin primeira={this.state.primeira} segunda={this.state.segunda} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.media} showResult={this.state.showResult} message={this.state.mensagem} />
+        return <C5554dwin primeira={this.state.primeira} segunda={this.state.segunda} add3eeField={this.add3eeField} isTerceira={this.state.isTerceira} terceira={this.state.terceira} message={this.state.mensagem} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.media} showResult={this.state.showResult} />
     }
   }
 
@@ -70,7 +71,13 @@ class App extends Component {
   }
 
   media() {
-    let result = ((this.state.primeira) + (this.state.segunda)) / 2;
+    let result;
+    if (this.state.isTerceira) {
+      result = ((this.state.primeira) + (this.state.segunda) + (this.state.terceira)) / 3;
+    } else {
+      result = ((this.state.primeira) + (this.state.segunda)) / 2;
+    }
+
     let msg = "";
     this.setState({ resultado: result });
 
