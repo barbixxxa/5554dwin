@@ -4,7 +4,7 @@ import Header from './components/Header';
 import MediaOptions from './components/MediaOptions';
 import C5554dwin from './components/C5554dwin';
 import C555p4dwin from './components/C555p4dwin';
-import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 class App extends Component {
 
