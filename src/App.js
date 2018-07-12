@@ -4,7 +4,6 @@ import Header from './components/Header';
 import MediaOptions from './components/MediaOptions';
 import C5554dwin from './components/C5554dwin';
 import C555p4dwin from './components/C555p4dwin';
-import { Card, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 class App extends Component {
 
@@ -124,18 +123,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Card>
-          <Header />
-          <div>
-            <CardBody>
-              <CardTitle>Card title</CardTitle>
-              <CardSubtitle><MediaOptions mediaOption={this.state.mediaOption} onChange={this.handleOptionChange} /></CardSubtitle>
-              <CardText>{this.switchOptions(this.state.mediaOption)}</CardText>
-            </CardBody>
-          </div>
-        </Card>
+        <Header />
+        <div>
+          <MediaOptions mediaOption={this.state.mediaOption} onChange={this.handleOptionChange} />
+          {this.switchOptions(this.state.mediaOption)}
+        </div>
       </div>
-
     );
   }
 }
