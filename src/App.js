@@ -4,6 +4,7 @@ import Header from './components/Header';
 import MediaOptions from './components/MediaOptions';
 import C5554dwin from './components/C5554dwin';
 import C555p4dwin from './components/C555p4dwin';
+import { Card, CardImg, CardText, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 
 class App extends Component {
 
@@ -17,6 +18,7 @@ class App extends Component {
       terceira: '',
       resultado: '',
       mensagem: '',
+      text: 'Add',
       mediaOption: '5554dwin',
       showResult: false
     };
@@ -38,12 +40,19 @@ class App extends Component {
         return <C555p4dwin primeira={this.state.primeira} segunda={this.state.segunda} primeiraPorcentagem={this.state.primeiraPorcentagem} resultado={this.state.resultado} message={this.state.mensagem} onChange={(e) => this.handleInputChange(e)} onClick={this.mediaPorcentagem} showResult={this.state.showResult} />
 
       default:
-        return <C5554dwin primeira={this.state.primeira} segunda={this.state.segunda} add3eeField={this.add3eeField} isTerceira={this.state.isTerceira} terceira={this.state.terceira} message={this.state.mensagem} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.media} showResult={this.state.showResult} />
+        return <C5554dwin primeira={this.state.primeira} segunda={this.state.segunda} add3eeField={this.add3eeField} isTerceira={this.state.isTerceira} terceira={this.state.terceira} message={this.state.mensagem} text={this.state.text} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.media} showResult={this.state.showResult} />
     }
   }
 
   add3eeField() {
-    this.setState({ isTerceira: !this.state.isTerceira });
+    let isT = this.state.isTerceira;
+
+    if (isT) {
+      this.setState({ text: "Add" });
+    } else {
+      this.setState({ text: "Remove" });
+    }
+    this.setState({ isTerceira: !isT });
   }
 
   handleInputChange(event) {
@@ -115,14 +124,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <div>
-          <MediaOptions mediaOption={this.state.mediaOption} onChange={this.handleOptionChange} />
-
-          {this.switchOptions(this.state.mediaOption)}
-
-        </div>
+        <Card>
+          <Header />
+          <div>
+            <CardBody>
+              <CardTitle>Card title</CardTitle>
+              <CardSubtitle><MediaOptions mediaOption={this.state.mediaOption} onChange={this.handleOptionChange} /></CardSubtitle>
+              <CardText>{this.switchOptions(this.state.mediaOption)}</CardText>
+            </CardBody>
+          </div>
+        </Card>
       </div>
+
     );
   }
 }

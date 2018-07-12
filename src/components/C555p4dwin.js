@@ -1,35 +1,33 @@
 import React from "react";
+import { Button, Input, Label } from 'reactstrap';
+import Message from './Message';
 
 export default class C555p4dwin extends React.Component {
 
     render() {
         return (
             <div>
-                <label>
-                    1º Nota:<input name="primeira" type="number" value={this.props.primeira} onChange={this.props.onChange} placeholder="0.0" min="0.0" max="10.0" step="0.1" />
-                </label>
+                <Label>
+                    1º Nota:<Input name="primeira" type="number" value={this.props.primeira} onChange={this.props.onChange} placeholder="0.0" min="0.0" max="10.0" step="0.1" />
+                </Label>
 
-                <label>
-                    Peso 1º Nota:<input name="primeiraPorcentagem" type="number" value={this.props.primeiraPorcentagem} onChange={this.props.onChange} placeholder="0 %" min="0" max="100" />
-                </label>
+                <Label>
+                    Peso 1º Nota:<Input name="primeiraPorcentagem" type="number" value={this.props.primeiraPorcentagem} onChange={this.props.onChange} placeholder="0 %" min="0" max="100" />
+                </Label>
 
-                <label>
-                    2º Nota:<input name="segunda" type="number" value={this.props.segunda} onChange={this.props.onChange} placeholder="0.0" min="0.0" max="10.0" step="0.1" />
-                </label>
+                <Label>
+                    2º Nota:<Input name="segunda" type="number" value={this.props.segunda} onChange={this.props.onChange} placeholder="0.0" min="0.0" max="10.0" step="0.1" />
+                </Label>
 
-                <label>
-                    Peso 2º Nota:<input name="segundaPorcentagem" type="number" value={100 - this.props.primeiraPorcentagem} placeholder="0 %" min="0" max="100" disabled />
-                </label>
+                <Label>
+                    Peso 2º Nota:<Input name="segundaPorcentagem" type="number" value={100 - this.props.primeiraPorcentagem} placeholder="0 %" min="0" max="100" disabled />
+                </Label>
 
-                <button type="button" onClick={this.props.onClick}>Click Me!</button>
+                <Button color="success" onClick={this.props.onClick}>Calculate!</Button>
                 {
                     this.props.showResult
-                        ? <div>
-                            <p>Média: {this.props.resultado}</p>
-                            <p>{this.props.message}</p>
-                        </div>
-                        :
-                        null
+                        ? <Message resultado={this.props.resultado} message={this.props.message} />
+                        : null
                 }
             </div>
         );
