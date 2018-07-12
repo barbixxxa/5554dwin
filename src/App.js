@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header.js';
-import MediaOptions from './components/MediaOptions.js';
-import MediaSimples from './components/MediaSimples.js';
-import MediaPorcentagem from './components/MediaPorcentagem.js';
+import Header from './components/Header';
+import MediaOptions from './components/MediaOptions';
+import C5554dwin from './components/C5554dwin';
+import C555p4dwin from './components/C555p4dwin';
 
 class App extends Component {
 
@@ -13,9 +13,11 @@ class App extends Component {
       primeira: '',
       primeiraPorcentagem: '',
       segunda: '',
+      isTerceira: false,
+      terceira: 'testando123',
       resultado: '',
       mensagem: '',
-      mediaOption: 'mediaSimples',
+      mediaOption: '5554dwin',
       showResult: false
     };
     this.handleOptionChange = this.handleOptionChange.bind(this);
@@ -31,15 +33,16 @@ class App extends Component {
 
   switchOptions(value) {
     switch (value) {
-      case 'mediaPorcentagem':
-        return <MediaPorcentagem primeira={this.state.primeira} segunda={this.state.segunda} primeiraPorcentagem={this.state.primeiraPorcentagem} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.mediaPorcentagem} showResult={this.state.showResult} />
-
-      case '5554dwin':
-        return <p> teste </p>
+      case '555%4dwin':
+        return <C555p4dwin primeira={this.state.primeira} segunda={this.state.segunda} primeiraPorcentagem={this.state.primeiraPorcentagem} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.mediaPorcentagem} showResult={this.state.showResult} />
 
       default:
-        return <MediaSimples primeira={this.state.primeira} segunda={this.state.segunda} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.media} showResult={this.state.showResult} message={this.state.mensagem} />
+        return <C5554dwin primeira={this.state.primeira} segunda={this.state.segunda} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.media} showResult={this.state.showResult} message={this.state.mensagem} />
     }
+  }
+
+  add3eeField() {
+    this.setState({ isTerceira: !this.state.isTerceira });
   }
 
   handleInputChange(event) {

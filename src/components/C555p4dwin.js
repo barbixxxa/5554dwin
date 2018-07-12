@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class MediaPorcentagem extends React.Component {
+export default class C555p4dwin extends React.Component {
 
     render() {
         return (
