@@ -15,11 +15,10 @@ export default class C5554dwin extends React.Component {
 
                     {
                         this.props.isTerceira
-                            ? <div>
-                                <label>
-                                    3º EE:<input name="terceira" type="number" value={this.props.terceira} onChange={this.props.onChange} placeholder="0.0" min="0.0" max="10.0" step="0.1" />
-                                </label>
-                            </div>
+                            ?
+                            <label>
+                                3º EE:<input name="terceira" type="number" value={this.props.terceira} onChange={this.props.onChange} placeholder="0.0" min="0.0" max="10.0" step="0.1" />
+                            </label>
                             : null
                     }
 

@@ -35,7 +35,7 @@ class App extends Component {
   switchOptions(value) {
     switch (value) {
       case '555%4dwin':
-        return <C555p4dwin primeira={this.state.primeira} segunda={this.state.segunda} primeiraPorcentagem={this.state.primeiraPorcentagem} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.mediaPorcentagem} showResult={this.state.showResult} />
+        return <C555p4dwin primeira={this.state.primeira} segunda={this.state.segunda} primeiraPorcentagem={this.state.primeiraPorcentagem} resultado={this.state.resultado} message={this.state.mensagem} onChange={(e) => this.handleInputChange(e)} onClick={this.mediaPorcentagem} showResult={this.state.showResult} />
 
       default:
         return <C5554dwin primeira={this.state.primeira} segunda={this.state.segunda} add3eeField={this.add3eeField} isTerceira={this.state.isTerceira} terceira={this.state.terceira} message={this.state.mensagem} resultado={this.state.resultado} onChange={(e) => this.handleInputChange(e)} onClick={this.media} showResult={this.state.showResult} />
@@ -93,7 +93,22 @@ class App extends Component {
   }
 
   mediaPorcentagem() {
-    this.setState({ resultado: ((this.state.primeira * this.state.primeiraPorcentagem) + (this.state.segunda * (100 - this.state.primeiraPorcentagem))) / 100 });
+    let result;
+    let msg = "";
+
+    result = ((this.state.primeira * this.state.primeiraPorcentagem) + (this.state.segunda * (100 - this.state.primeiraPorcentagem))) / 100;
+
+    this.setState({ resultado: result });
+
+    if (result < 3) {
+      msg = "Achou que ia pra final!? Achou errado OTÁRIO!!!";
+    } else if (result < 7) {
+      msg = "Você precisa de: " + parseFloat(10 - result);
+    } else {
+      msg = "Aprovado!";
+    }
+
+    this.setState({ mensagem: msg });
     this.setState({ showResult: true });
   }
 
