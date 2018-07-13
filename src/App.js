@@ -10,12 +10,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      primeira: '',
-      primeiraPorcentagem: '',
-      segunda: '',
+      primeira: 0.0,
+      primeiraPorcentagem: 50,
+      segunda: 0.0,
       isTerceira: false,
-      terceira: '',
-      resultado: '',
+      terceira: 0.0,
+      resultado: 0,
       mensagem: '',
       text: 'Add',
       mediaOption: '5554dwin',
@@ -59,18 +59,22 @@ class App extends Component {
     let value = target.value;
     const name = target.name;
 
-    if (name === 'primeira' || name === 'segunda') {
-      if (value > 10) {
-        value = 10;
-      } else if (value < 0) {
-        value = 0;
+    if (value !== '') {
+      if (name === 'primeira' || name === 'segunda' || name === 'segunda') {
+        if (value > 10) {
+          value = 10;
+        } else if (value < 0) {
+          value = 0;
+        }
+      } else if (name === 'primeiraPorcentagem') {
+        if (value > 100) {
+          value = 100;
+        } else if (value < 0) {
+          value = 0;
+        }
       }
-    } else if (name === 'primeiraPorcentagem') {
-      if (value > 100) {
-        value = 100;
-      } else if (value < 0) {
-        value = 0;
-      }
+    } else {
+      value = 0;
     }
 
     this.setState({
