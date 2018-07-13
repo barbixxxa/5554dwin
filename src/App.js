@@ -10,11 +10,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      primeira: 0.0,
-      primeiraPorcentagem: 50,
-      segunda: 0.0,
+      primeira: 0,
+      primeiraPorcentagem: 75,
+      segunda: 0,
       isTerceira: false,
-      terceira: 0.0,
+      terceira: 0,
       resultado: 0,
       mensagem: '',
       text: 'Add',
@@ -30,7 +30,7 @@ class App extends Component {
   }
 
   handleOptionChange(event) {
-    this.setState({ primeira: '', segunda: '', terceira: '', primeiraPorcentagem: '', resultado: '', showResult: false, mediaOption: event.target.value });
+    this.setState({ primeira: 0, segunda: 0, terceira: 0, primeiraPorcentagem: 75, resultado: 0, showResult: false, mediaOption: event.target.value });
   }
 
   switchOptions(value) {
