@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './components/Header';
 import MediaOptions from './components/MediaOptions';
 import C5554dwin from './components/C5554dwin';
 import C555p4dwin from './components/C555p4dwin';
@@ -127,7 +126,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
         <div>
           <MediaOptions mediaOption={this.state.mediaOption} onChange={this.handleOptionChange} />
           {this.switchOptions(this.state.mediaOption)}
